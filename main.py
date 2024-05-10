@@ -5,11 +5,11 @@ from fastapi import FastAPI, UploadFile
 
 
 app = FastAPI(
-    title='Get Building Damage'
+    title="Calculate Building's Damage"
 )
 
 
-@app.post("/upload_photo_of_building")
+@app.post("/upload_photo_of_building/")
 def upload_photo_of_building(file: UploadFile):
     with open(file.filename, "wb") as buffer:
         shutil.copyfileobj(file.file, buffer)
