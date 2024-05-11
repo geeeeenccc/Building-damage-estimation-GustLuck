@@ -17,11 +17,21 @@
         p {
             color: #666;
         }
+        .result {
+            font-size: 24px;
+            font-weight: bold;
+            color: red;
+        }
+        .info {
+            font-size: 18px;
+            color: #666;
+        }
     </style>
 </head>
 <body>
     <h2>Results of Building Analysis</h2>
-    <p>Here are the results of the analysis:</p>
-    <p>{{ result }}</p>
+    <p class="info">Here are the results of the analysis:</p>
+    <p class="result">{{ result }}%</p>
+    <p class="info">As a result we can see a {{ result_info }}</p>
 </body>
 </html>
