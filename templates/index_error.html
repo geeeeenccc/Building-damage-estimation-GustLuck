@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Calculate Building's Damage</title>
+        <style>
+            body {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                background-color: #f0f0f0;
+            }
+
+            form {
+                text-align: center;
+                background-color: #ffffff;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+                margin-top: 20px;
+            }
+
+            h2 {
+                color: #333;
+            }
+
+            label {
+                display: block;
+                margin-bottom: 10px;
+            }
+
+            input[type="file"] {
+                margin-bottom: 20px;
+            }
+
+            input[type="submit"] {
+                background-color: #28a745;
+                color: #ffffff;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+
+            input[type="submit"]:hover {
+                background-color: #218838;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>Calculate Building's Damage</h2>
+        {% if error %}
+            <p style="color: red;">{{ error }}</p>
+        {% endif %}
+        <form action="http://localhost:8000/upload_photo_of_building/" method="post" enctype="multipart/form-data">
+
+            <label for="file">Choose your photo:</label>
+            <input type="file" id="file" name="file" accept=".png">
+
+            <br><br>
+
+            <input type="submit" value="Analyze">
+        </form>
+    </body>
+</html>
