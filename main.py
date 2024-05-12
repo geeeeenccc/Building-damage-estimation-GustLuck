@@ -34,6 +34,7 @@ def extract_coordinates_and_counts(results):
 
 @app.post("/upload_photo_of_building/")
 async def upload_photo_of_building(request: Request, file: UploadFile = None):
+
     try:
         with open(file.filename, "wb") as buffer:
             shutil.copyfileobj(file.file, buffer)
@@ -47,16 +48,19 @@ async def upload_photo_of_building(request: Request, file: UploadFile = None):
 
         coordinates, class_counts = extract_coordinates_and_counts(results)
 
-        total_area_1 = 0  # area of regular damage
+        total_area_2 = 0  # area of regular damage
         total_area_3 = 0  # area of damage to the roof
         total_area_4 = 0  # area of broken window
         area_0 = 0  # total area of the building
+        area_1 = 0  # area of damage to the roof
 
         for class_id, confidence, bbox in coordinates:
             if class_id == 0:
-                area_0 += bbox_area(bbox) * 0.85
+                area_0 += bbox_area(bbox) * 0.9
             elif class_id == 1:
-                total_area_1 += bbox_area(bbox)
+                total_area_2 += bbox_area(bbox) * 0.6
+            elif class_id == 2:
+                area_1 += bbox_area(bbox)
             elif class_id == 3:
                 total_area_3 += bbox_area(bbox)
             elif class_id == 4:
@@ -66,41 +70,44 @@ async def upload_photo_of_building(request: Request, file: UploadFile = None):
         if area_0 == 0:
             result_info = "The building is totally crashed or there is no building in the picture."
         else:
-            result = (total_area_1 + total_area_4 + total_area_3) / area_0 * 100
+            result = (total_area_2 + total_area_4 + total_area_3) / (area_0 + area_1) * 100
             if result < 0:
                 result = 0
             if result >= 100:
-                result_info = "There are multiple damaged objects or the number of damage is very big. "
+                result_info = "there are multiple damaged objects or the number of damage is very big. "
             elif result > 30:
-                result_info = "Major damage to the building. "
+                result_info = "major damage to the building. "
             elif result > 15:
-                result_info = "Noticeable damage to the building. "
+                result_info = "noticeable damage to the building. "
             elif result > 0:
-                result_info = "Minimal damage to the building. "
+                result_info = "minimal damage to the building. "
             else:
-                result_info = "The building appears in good condition. "
+                result_info = "the building appears in good condition. "
 
-            # Insert window status here
             if class_counts[4] == 0:
-                result_info += "No broken windows were detected. "
+                result_info += "No broken windows "
             elif 0 < class_counts[4] <= 10:
-                result_info += "Few broken windows detected (less than 10). "
+                result_info += "Few broken windows (less than 10) "
             elif class_counts[4] > 10:
-                result_info += "Many broken windows detected (more than 10). "
+                result_info += "Many broken windows (more than 10) "
+            if class_counts[3] == 0:
+                result_info += "and no damage to the roof was detected. "
+            if class_counts[3] > 0:
+                result_info += "and severe damage to the roof was detected. "
 
             # Add concluding advice based on damage severity
             if result >= 100 or result > 30:
-                result_info += "\nUrgent professional assessment and repairs needed."
+                conclusion = "Urgent professional assessment and repairs needed."
             elif result > 15:
-                result_info += "\nEvaluation recommended to determine necessary repairs."
+                conclusion = "Evaluation recommended to determine necessary repairs."
             elif result > 0:
-                result_info += "\nSimple repairs likely sufficient; inspection advised."
+                conclusion = "Simple repairs likely sufficient; inspection advised."
             else:
-                result_info += "\nRegular maintenance recommended."
+                conclusion = "Regular maintenance recommended."
 
         os.remove(img_path)
 
-        return templates.TemplateResponse("results.html", {"request": request, "result": round(result, 4), "result_info": result_info})
+        return templates.TemplateResponse("results.html", {"request": request, "result": round(result, 3), "result_info": result_info, "conclusion": conclusion})
     except FileNotFoundError:
         return templates.TemplateResponse("index_error.html", {"request": request, "error": "You didn't upload the photo."})
 
