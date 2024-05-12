@@ -42,7 +42,7 @@ async def upload_photo_of_building(request: Request, file: UploadFile = None):
         img_path = file.filename
 
         # Load model from local weights
-        model = torch.hub.load('ultralytics/yolov5', 'custom', path='yolov5/runs/train/exp9/weights/best.pt', force_reload=True)
+        model = torch.hub.load('ultralytics/yolov5', 'custom', path='yolov5/runs/train/exp8/weights/best.pt', force_reload=True)
         results = model(img_path)
         results.show()
 
