@@ -42,7 +42,7 @@ async def upload_photo_of_building(request: Request, file: UploadFile = None):
         img_path = file.filename
 
         # Load model from local weights
-        model = torch.hub.load('ultralytics/yolov5', 'custom', path='yolov5/runs/train/exp8/weights/best.pt', force_reload=True)
+        model = torch.hub.load('ultralytics/yolov5', 'custom', path='yolov5/runs/train/exp9/weights/best.pt', force_reload=True)
         results = model(img_path)
         results.show()
 
@@ -66,9 +66,12 @@ async def upload_photo_of_building(request: Request, file: UploadFile = None):
             elif class_id == 4:
                 total_area_4 += bbox_area(bbox)
 
+        conclusion = ""
         result = 0  # percentage of damage
+
         if area_0 == 0:
-            result_info = "The building is totally crashed or there is no building in the picture."
+            result = 100
+            result_info = "еhe building is totally crashed or there is no building in the picture."
         else:
             result = (total_area_2 + total_area_4 + total_area_3) / (area_0 + area_1) * 100
             if result < 0:
@@ -95,15 +98,15 @@ async def upload_photo_of_building(request: Request, file: UploadFile = None):
             if class_counts[3] > 0:
                 result_info += "and severe damage to the roof was detected. "
 
-            # Add concluding advice based on damage severity
-            if result >= 100 or result > 30:
-                conclusion = "Urgent professional assessment and repairs needed."
-            elif result > 15:
-                conclusion = "Evaluation recommended to determine necessary repairs."
-            elif result > 0:
-                conclusion = "Simple repairs likely sufficient; inspection advised."
-            else:
-                conclusion = "Regular maintenance recommended."
+        # Add concluding advice based on damage severity
+        if result >= 100 or result > 30:
+            conclusion = "Possibility of living in this building is extremely low. Urgent professional assessment and repairs needed."
+        elif result > 15:
+            conclusion = "Possibility of living in this building is not very high. Evaluation recommended to determine necessary repairs."
+        elif result > 0:
+            conclusion = "It is possible to live in this building. Simple repairs likely sufficient; inspection advised."
+        else:
+            conclusion = "Regular maintenance recommended."
 
         os.remove(img_path)
 
