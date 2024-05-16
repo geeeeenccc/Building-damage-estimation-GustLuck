@@ -49,6 +49,16 @@ uvicorn main:app --reload
 
 **Model:** The application uses a YOLOv5 model for object detection. You can replace the model path in the **upload_photo_of_building** function in **main.py** with your custom YOLOv5 model path.
 
+## Creators
+
+**[Danyil Zlobin](https://github.com/Danemm99)**
+**[Geray Gench](https://github.com/geeeeenccc)**
+**[Ivan Paevsky](https://github.com/ne4KuH)**
+
+
+
+
+
 ![image](https://github.com/geeeeenccc/Building-damage-estimation-GustLuck/assets/101811004/6b2ba63b-a1f1-4dc3-8316-58fdfed4aa08)
 
 
