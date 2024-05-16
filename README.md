@@ -19,12 +19,10 @@ git clone https://github.com/geeeeenccc/Building-damage-estimation-GustLuck.git 
 
 **2. Install dependencies:**
 
-1)
 ```commandline
 cd yolov5
 ```
 
-2)
 ```commandline
 pip install -r requirements.txt
 ```
