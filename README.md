@@ -4,11 +4,11 @@ This FastAPI application utilizes YOLOv5 object detection to assess the extent o
 
 ## Features
 
-Damage Assessment: The application detects various types of damages such as regular damage, damage to the roof, and broken windows in uploaded images of buildings.
+**Damage Assessment:** The application detects various types of damages such as regular damage, damage to the roof, and broken windows in uploaded images of buildings.
 
-Severity Estimation: It calculates the severity of the damage based on the detected areas and provides a percentage of damage.
+**Severity Estimation:** It calculates the severity of the damage based on the detected areas and provides a percentage of damage.
 
-Descriptive Insights: Provides descriptive information about the detected damages and suggests possible conclusions based on the severity.
+**Descriptive Insights:** Provides descriptive information about the detected damages and suggests possible conclusions based on the severity.
 
 ## Installation
 
