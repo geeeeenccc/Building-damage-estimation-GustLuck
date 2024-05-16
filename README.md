@@ -22,7 +22,22 @@ pip install -r requirements.txt
 pip install -r requirements.txt
 ```
 
-## 
+## Usage
+
+**1. Start the FastAPI server:
+```commandline
+uvicorn main:app --reload
+```
+
+**2. Open your browser and go to http://localhost:8000**
+
+**3. Upload an image of a building for damage assessment.**
+
+**4. View the calculated damage percentage, descriptive information, and conclusions.**
+
+## Configuration
+
+**Model:** The application uses a YOLOv5 model for object detection. You can replace the model path in the **upload_photo_of_building** function in **main.py** with your custom YOLOv5 model path.
 
 ![image](https://github.com/geeeeenccc/Building-damage-estimation-GustLuck/assets/101811004/6b2ba63b-a1f1-4dc3-8316-58fdfed4aa08)
 
