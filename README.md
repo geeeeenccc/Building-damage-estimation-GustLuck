@@ -30,6 +30,11 @@ pip install -r requirements.txt
 ## Usage
 
 1. Start the FastAPI server:
+
+```commandline
+cd..
+```
+
 ```commandline
 uvicorn main:app --reload
 ```
