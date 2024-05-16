@@ -24,10 +24,10 @@ pip install -r requirements.txt
 
 ## 
 
-![image](https://github.com/geeeeenccc/Building-damage-estimation-GustLuck/assets/101811004/1401c594-a2ea-4cbd-aaf5-8f96c008138e)
+![image](https://github.com/geeeeenccc/Building-damage-estimation-GustLuck/assets/101811004/6b2ba63b-a1f1-4dc3-8316-58fdfed4aa08)
 
 
-![image](https://github.com/geeeeenccc/Building-damage-estimation-GustLuck/assets/101811004/80503aa9-0067-45bf-803b-7a92c2891e53)
+![image](https://github.com/geeeeenccc/Building-damage-estimation-GustLuck/assets/101811004/9377f82b-c9f1-4cd7-a9c2-990ab7704f02)
 
 
 ![image](https://github.com/geeeeenccc/Building-damage-estimation-GustLuck/assets/101811004/54c6842d-1b11-48d9-a9a3-e344f1fb6d00)
