@@ -51,9 +51,9 @@ uvicorn main:app --reload
 
 ## Creators
 
-**[Danyil Zlobin](https://github.com/Danemm99)**
-**[Geray Gench](https://github.com/geeeeenccc)**
-**[Ivan Paevsky](https://github.com/ne4KuH)**
+1. **[Danyil Zlobin](https://github.com/Danemm99)**
+2. **[Geray Gench](https://github.com/geeeeenccc)**
+3. **[Ivan Paevsky](https://github.com/ne4KuH)**
 
 
 
