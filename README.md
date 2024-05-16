@@ -47,7 +47,7 @@ uvicorn main:app --reload
 
 ## Configuration
 
-**Model:** The application uses a YOLOv5 model for object detection. You can replace the model path in the **upload_photo_of_building** function in **main.py** with your custom YOLOv5 model path.
+**Model:** The application uses a YOLOv5 model for object detection. You can replace the model path in the `upload_photo_of_building` function in `main.py` with your custom YOLOv5 model path.
 
 ## Creators
 
