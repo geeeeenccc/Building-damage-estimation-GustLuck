@@ -18,22 +18,29 @@ git clone https://github.com/geeeeenccc/Building-damage-estimation-GustLuck.git 
 ```
 
 **2. Install dependencies:**
+
+1)
+```commandline
+cd yolov5
+```
+
+2)
 ```commandline
 pip install -r requirements.txt
 ```
 
 ## Usage
 
-**1. Start the FastAPI server:**
+1. Start the FastAPI server:
 ```commandline
 uvicorn main:app --reload
 ```
 
-**2. Open your browser and go to http://localhost:8000**
+2. Run **index.html** file.
 
-**3. Upload an image of a building for damage assessment.**
+3. Upload an image of a building for damage assessment.
 
-**4. View the calculated damage percentage, descriptive information, and conclusions.**
+4. View the calculated damage percentage, descriptive information, and conclusions.
 
 ## Configuration
 
