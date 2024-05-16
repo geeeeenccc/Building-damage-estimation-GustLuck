@@ -12,9 +12,17 @@ This FastAPI application utilizes YOLOv5 object detection to assess the extent o
 
 ## Installation
 
+**1. Clone the repository to your folder:**
 ```commandline
 pip install -r requirements.txt
 ```
+
+**2. Install dependencies:**
+```commandline
+pip install -r requirements.txt
+```
+
+## 
 
 ![image](https://github.com/geeeeenccc/Building-damage-estimation-GustLuck/assets/101811004/54c6842d-1b11-48d9-a9a3-e344f1fb6d00)
 
